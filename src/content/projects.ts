@@ -24,13 +24,13 @@ export const projects: Project[] = [
     year: '2025',
     title: 'Project two',
     summary: 'What problem it solved, for whom, and the outcome you reached.',
-    stack: ['React', 'Node.js'],
+    stack: ['TypeScript', 'React', 'Node.js'],
   },
   {
     slug: 'project-three',
     year: '2024',
     title: 'Project three',
     summary: 'A short, concrete description — plain words over buzzwords.',
-    stack: ['TypeScript', 'Svelte'],
+    stack: ['SvelteKit', 'TypeScript', 'Vite'],
   },
 ];
