@@ -1,9 +1,6 @@
-//@ts-check
+import type { NextConfig } from 'next';
 
-/**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
+const nextConfig: NextConfig = {
   // React Compiler (stable in Next.js 16) auto-memoizes components and hooks at
   // build time, so manual useMemo/useCallback/memo are unnecessary. Requires the
   // babel-plugin-react-compiler dependency. Expect slightly slower builds.
@@ -11,4 +8,4 @@ const nextConfig = {
   reactCompiler: true,
 };
 
-module.exports = nextConfig;
+export default nextConfig;
