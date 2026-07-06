@@ -62,18 +62,19 @@ export default [
       ...jsxA11y.flatConfigs.recommended.rules,
     },
   },
-  // CommonJS config files (next.config.js, postcss.config.js) run in Node.
-  {
-    files: ['**/*.js', '**/*.cjs'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      globals: globals.node,
-    },
-  },
-  // ESM config files (eslint/vitest/tailwind) run in Node too.
+  // Node config files run in Node. The package is `"type": "module"`, so `.mjs`
+  // and `*.config.ts` (next/postcss/tailwind/vitest/playwright) are ESM; only
+  // explicit `.cjs` files are CommonJS.
   {
     files: ['**/*.mjs', '**/*.config.ts'],
     languageOptions: {
+      globals: globals.node,
+    },
+  },
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
       globals: globals.node,
     },
   },
