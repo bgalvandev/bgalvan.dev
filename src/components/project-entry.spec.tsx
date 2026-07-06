@@ -1,18 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import { ProjectCard } from './project-card';
+import { ProjectEntry } from './project-entry';
 import type { Project } from '@/content/projects';
 
 const project: Project = {
   slug: 'demo',
+  year: '2026',
   title: 'Demo Project',
   summary: 'A short description.',
   stack: ['TypeScript', 'React'],
 };
 
-describe('ProjectCard', () => {
-  it('renders the title, summary, and stack', () => {
-    render(<ProjectCard project={project} />);
+describe('ProjectEntry', () => {
+  it('renders the year, title, summary, and stack', () => {
+    render(<ProjectEntry project={project} />);
 
+    expect(screen.getByText('2026')).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: 'Demo Project' }),
     ).toBeInTheDocument();
@@ -23,7 +25,7 @@ describe('ProjectCard', () => {
 
   it('renders as a link when href is provided', () => {
     render(
-      <ProjectCard project={{ ...project, href: 'https://example.com' }} />,
+      <ProjectEntry project={{ ...project, href: 'https://example.com' }} />,
     );
 
     expect(screen.getByRole('link')).toHaveAttribute(

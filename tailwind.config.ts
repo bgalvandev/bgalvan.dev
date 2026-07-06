@@ -3,9 +3,10 @@ import type { Config } from 'tailwindcss';
 
 /**
  * bgalvan.dev — portfolio design tokens.
- * A restrained, editorial base: near-black ink on warm paper, a single accent,
- * and a mono face for code/labels. Treat these as a starting palette to make
- * your own — the point is one deliberate identity, not template defaults.
+ * Colors are indirected through CSS variables (see src/app/globals.css) so the
+ * same tokens carry both the light and dark palettes. The identity: near-black
+ * ink on soft paper, a single confident blue accent, and a mono face that does
+ * the "engineered" talking (labels, years, the spec-sheet header).
  */
 const config: Config = {
   // Absolute glob so class detection is independent of the build CWD.
@@ -13,12 +14,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: '#111110',
-        paper: '#FAF9F6',
-        surface: '#F2F0EA',
-        line: '#E3E0D8',
-        muted: '#6B6A63',
-        accent: '#3B5BDB',
+        ink: 'var(--ink)',
+        paper: 'var(--paper)',
+        surface: 'var(--surface)',
+        line: 'var(--line)',
+        muted: 'var(--muted)',
+        accent: 'var(--accent)',
+        'accent-contrast': 'var(--accent-contrast)',
       },
       fontFamily: {
         mono: [

@@ -1,6 +1,33 @@
 @import 'tailwindcss';
 @config '../../tailwind.config.ts';
 
+/*
+ * Theme tokens live as CSS variables so light/dark is a single source of truth
+ * that flips with the OS preference — no theme-toggle JS, no class juggling.
+ * The Tailwind color tokens (see tailwind.config.ts) map to these vars.
+ */
+:root {
+  --paper: #fcfcfa;
+  --ink: #14140f;
+  --muted: #6c6a61;
+  --line: #e4e2da;
+  --surface: #f3f1ea;
+  --accent: #2b4be3;
+  --accent-contrast: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121114;
+    --ink: #eceae3;
+    --muted: #97948b;
+    --line: #272529;
+    --surface: #1b1a1e;
+    --accent: #8298ff;
+    --accent-contrast: #0b0b0d;
+  }
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -20,6 +47,24 @@
       'Helvetica Neue',
       Arial,
       sans-serif;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Middot separators between tech items — decorative, so kept out of the DOM. */
+  .tech-list > li + li::before {
+    content: '·';
+    margin-inline: 0.5rem;
+    color: var(--muted);
   }
 }
 
