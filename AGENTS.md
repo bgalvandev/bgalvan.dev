@@ -89,9 +89,13 @@ Scope: repository-wide. Procedure: `code-quality` skill.
 1. Unit/component tests MUST use **Vitest** + **React Testing Library** and assert
    user-visible behavior.
 2. Test files live next to source as `*.spec.{ts,tsx}` / `*.test.{ts,tsx}`.
+3. Browser end-to-end tests use **Playwright**, live in `e2e/**/*.spec.ts`, and run
+   against a production build via `pnpm run test:e2e` — separate from `check` (they
+   need a browser and a server) and covered by a dedicated CI `e2e` job. Procedure:
+   `frontend-e2e` skill.
 
 Verification (minimum merge gate): `pnpm run check` passes
-(lint, typecheck, test, build, dead-code, dupes).
+(lint, typecheck, test, build, dead-code, dupes); the CI `e2e` job passes.
 
 ## Commit Message Standard
 
@@ -161,5 +165,6 @@ Files use kebab-case (`project-card.tsx`, `format-date.ts`). Prefer explicit nam
 - `frontend-architecture` — how to structure components, routes, and content.
 - `frontend-performance` — React Compiler, streaming, virtualization, bundle size.
 - `frontend-design` — distinctive, intentional visual design.
+- `frontend-e2e` — Playwright browser end-to-end tests for user journeys.
 - `code-quality` — the knip + jscpd gates and DRY extraction.
 - `commit-check` — validate a change against commit/branch standards before committing.
