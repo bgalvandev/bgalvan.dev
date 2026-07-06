@@ -19,7 +19,8 @@
     "jsx": "react-jsx",
     "noEmit": true,
     "incremental": true,
-    "baseUrl": ".",
+    // No baseUrl: TS 6 deprecates it, and path aliases resolve relative to this
+    // file's directory, so `@/*` → `./src/*` works without it.
     "paths": {
       "@/*": ["./src/*"]
     },
