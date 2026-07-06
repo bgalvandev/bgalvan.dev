@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Build / output
+.next/
+dist/
+build/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing / coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Env / secrets
+# Real env files are ignored; only committed templates (*.example) are tracked.
+.env
+.env.*
+!.env.*.example
+*.pem
+*.key
+
+# Caches
+.cache/
+.eslintcache
+
+# Editors / IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Vercel / deploy
+.vercel/
+
+# AI / agent local config
+# Portable skills live in .agents/skills (read by tool-agnostic agents);
+# .claude/skills is a symlink so Claude Code discovers the same files.
+# Share team-owned config; keep personal/machine-specific overrides local.
+.agents/*
+!.agents/skills/
+.claude/*
+!.claude/skills
+!.claude/settings.json
+.claude/settings.local.json
+.cursor/
+.aider*
