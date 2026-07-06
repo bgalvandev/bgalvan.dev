@@ -122,6 +122,9 @@ contrast`, `chore(ci): pin node via .nvmrc`.
    explicit confirmation; if a force update is unavoidable use `--force-with-lease`,
    never plain `--force`.
 3. Do not commit feature work directly on `main`; create a working branch first.
+4. Before opening a PR, or reporting one ready or mergeable, run the `pr-ready` skill
+   (ancestry vs `origin/main`, mergeability, CI rollup) — never call a stale or
+   conflicting branch ready.
 
 ## CI and Supply Chain Standard
 
@@ -131,6 +134,14 @@ Scope: `.github/workflows/**`, `.github/dependabot.yml`.
    `.github/workflows/ci.yml`).
 2. Dependency update automation MUST be configured via `.github/dependabot.yml`.
 3. Workflow credentials MUST live in GitHub Secrets and MUST NOT be committed.
+
+## Decision Records (ADRs)
+
+Decisions that shape the repo and are not obvious from the code — hosting, testing
+strategy, a framework/tooling or theming choice — SHOULD be recorded as a short ADR
+under `docs/adr/` (copy `0000-template.md`). Records state the decision, the options
+weighed, and the consequences; status flows `Proposed` → `Accepted` → `Superseded by
+NNNN`. Reference the relevant ADR from the PR that enacts or changes the decision.
 
 ## Agent Skills and Local Configuration Standard
 
@@ -168,3 +179,4 @@ Files use kebab-case (`project-card.tsx`, `format-date.ts`). Prefer explicit nam
 - `frontend-e2e` — Playwright browser end-to-end tests for user journeys.
 - `code-quality` — the knip + jscpd gates and DRY extraction.
 - `commit-check` — validate a change against commit/branch standards before committing.
+- `pr-ready` — verify a PR is genuinely ready (ancestry, mergeability, CI) before opening or merging.
