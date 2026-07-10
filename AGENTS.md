@@ -180,3 +180,4 @@ Files use kebab-case (`project-card.tsx`, `format-date.ts`). Prefer explicit nam
 - `code-quality` — the knip + jscpd gates and DRY extraction.
 - `commit-check` — validate a change against commit/branch standards before committing.
 - `pr-ready` — verify a PR is genuinely ready (ancestry, mergeability, CI) before opening or merging.
+- `grill-me` — Socratic pre-build interview that pressure-tests a plan or decision before building.
