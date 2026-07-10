@@ -52,7 +52,7 @@
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "^17.6.0",
     "jscpd": "^5.0.11",
-    "jsdom": "^27.4.0",
+    "jsdom": "^29.1.1",
     "knip": "^6.18.0",
     "postcss": "^8.5.15",
     "prettier": "~3.9.4",
