@@ -22,19 +22,30 @@ test.describe('home page', () => {
     );
   });
 
-  test('applies the dark palette under a dark color scheme', async ({
-    page,
-  }) => {
+  test('follows a dark OS preference by default', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
     const home = new HomePage(page);
     await home.goto();
 
-    // The dark token flips via @media (prefers-color-scheme: dark) in globals.css.
+    await expect(page.locator('html')).toHaveClass(/dark/);
     const paper = await page.evaluate(() =>
       getComputedStyle(document.documentElement)
         .getPropertyValue('--paper')
         .trim(),
     );
     expect(paper).toBe('#121114');
+  });
+
+  test('the toggle switches theme and back', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' });
+    const home = new HomePage(page);
+    await home.goto();
+    const html = page.locator('html');
+
+    await expect(html).not.toHaveClass(/dark/);
+    await home.themeToggle.click();
+    await expect(html).toHaveClass(/dark/);
+    await home.themeToggle.click();
+    await expect(html).not.toHaveClass(/dark/);
   });
 });

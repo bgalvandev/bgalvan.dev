@@ -10,6 +10,7 @@ export class HomePage {
   readonly projectEntries: Locator;
   readonly emailLink: Locator;
   readonly githubLink: Locator;
+  readonly themeToggle: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +19,7 @@ export class HomePage {
     this.projectEntries = this.work.getByRole('heading', { level: 3 });
     this.emailLink = page.getByRole('link', { name: 'bruno@clinicsay.com' });
     this.githubLink = page.getByRole('link', { name: 'GitHub' });
+    this.themeToggle = page.getByRole('button', { name: 'Toggle color theme' });
   }
 
   async goto() {

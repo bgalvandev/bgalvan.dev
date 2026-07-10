@@ -14,3 +14,4 @@ theming approach. Skip trivia.
 ## Index
 
 - [0001 — Hosting on Vercel](0001-hosting-on-vercel.md)
+- [0002 — CSS-first theming with a light/dark toggle](0002-theming-css-first-and-toggle.md)
