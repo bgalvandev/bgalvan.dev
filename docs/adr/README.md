@@ -14,4 +14,3 @@ theming approach. Skip trivia.
 ## Index
 
 - [0001 — Hosting on Vercel](0001-hosting-on-vercel.md)
-- [0002 — Browser e2e without a database](0002-e2e-without-a-database.md)
