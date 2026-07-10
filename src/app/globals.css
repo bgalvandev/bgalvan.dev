@@ -1,10 +1,14 @@
 @import 'tailwindcss';
-@config '../../tailwind.config.ts';
+
+/* Dark mode is class-based (next-themes toggles `.dark` on <html>). */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Theme tokens live as CSS variables so light/dark is a single source of truth
- * that flips with the OS preference — no theme-toggle JS, no class juggling.
- * The Tailwind color tokens (see tailwind.config.ts) map to these vars.
+ * ONE color substrate: semantic tokens, defined once and theme-aware by
+ * construction. Components pick a token by intent (bg-paper, text-ink…) and
+ * never a raw Tailwind palette color — so a single class-set works in both
+ * themes. Light values in :root, dark values in .dark; keep the two token
+ * sets in parity (guarded by theme-tokens.spec.ts).
  */
 :root {
   --paper: #fcfcfa;
@@ -16,16 +20,33 @@
   --accent-contrast: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #121114;
-    --ink: #eceae3;
-    --muted: #97948b;
-    --line: #272529;
-    --surface: #1b1a1e;
-    --accent: #8298ff;
-    --accent-contrast: #0b0b0d;
-  }
+.dark {
+  --paper: #121114;
+  --ink: #eceae3;
+  --muted: #97948b;
+  --line: #272529;
+  --surface: #1b1a1e;
+  --accent: #8298ff;
+  --accent-contrast: #0b0b0d;
+}
+
+/*
+ * `@theme inline` (not plain `@theme`) is load-bearing: `inline` makes each
+ * utility emit `var(--token)`, so the `.dark` override applies at runtime.
+ * A plain `@theme` would bake the light value at build time and dark mode
+ * would silently do nothing.
+ */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
 }
 
 @layer base {

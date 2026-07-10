@@ -2,9 +2,8 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": [
     "src/app/**/{page,layout,template,loading,error,not-found,global-error,route,default,sitemap,robots,manifest,opengraph-image,icon,apple-icon}.{ts,tsx}",
-    "playwright.config.ts",
     "e2e/**/*.spec.ts"
   ],
   "project": ["src/**/*.{ts,tsx}", "e2e/**/*.ts"],
-  "ignoreDependencies": ["tslib"]
+  "ignoreDependencies": ["tslib", "tailwindcss"]
 }

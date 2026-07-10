@@ -1,4 +1,5 @@
 import { ProjectEntry } from '@/components/project-entry';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { projects } from '@/content/projects';
 
 // Spec-sheet header — real, editable facts, not decoration. Edit these freely.
@@ -11,6 +12,9 @@ const meta = [
 export default function HomePage() {
   return (
     <main className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
+      <div className="mb-10 flex justify-end">
+        <ThemeToggle />
+      </div>
       <header>
         <p className="font-mono text-sm text-muted">
           Bruno Galván — Software engineer
