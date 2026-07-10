@@ -1,30 +1,39 @@
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://bgalvan.dev'),
-  title: 'Bruno Galván — Software engineer',
-  description:
-    'Bruno Galván is a software engineer building clear, reliable web software. Selected work and ways to get in touch.',
-  openGraph: {
-    title: 'Bruno Galván — Software engineer',
-    description: 'Software engineer building clear, reliable web software.',
-    url: 'https://bgalvan.dev',
-    siteName: 'bgalvan.dev',
-    type: 'website',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('metadata');
+  return {
+    metadataBase: new URL('https://bgalvan.dev'),
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: 'https://bgalvan.dev',
+      siteName: 'bgalvan.dev',
+      type: 'website',
+    },
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

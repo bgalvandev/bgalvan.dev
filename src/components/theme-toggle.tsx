@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 
 // The label is driven purely by the `.dark` class (Tailwind `dark:` variant),
@@ -8,16 +9,17 @@ import { useTheme } from 'next-themes';
 // button shows the theme it switches TO.
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
+  const t = useTranslations('nav');
 
   return (
     <button
       type="button"
-      aria-label="Toggle color theme"
+      aria-label={t('themeToggle')}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       className="rounded border border-line px-2.5 py-1 font-mono text-xs text-muted transition-colors hover:border-accent hover:text-accent"
     >
-      <span className="dark:hidden">Dark</span>
-      <span className="hidden dark:inline">Light</span>
+      <span className="dark:hidden">{t('themeToDark')}</span>
+      <span className="hidden dark:inline">{t('themeToLight')}</span>
     </button>
   );
 }

@@ -3,16 +3,20 @@ import { ProjectEntry } from './project-entry';
 import type { Project } from '@/content/projects';
 
 const project: Project = {
-  slug: 'demo',
+  slug: 'project-one',
   year: '2026',
-  title: 'Demo Project',
-  summary: 'A short description.',
   stack: ['TypeScript', 'React'],
 };
 
 describe('ProjectEntry', () => {
   it('renders the year, title, summary, and stack', () => {
-    render(<ProjectEntry project={project} />);
+    render(
+      <ProjectEntry
+        project={project}
+        title="Demo Project"
+        summary="A short description."
+      />,
+    );
 
     expect(screen.getByText('2026')).toBeInTheDocument();
     expect(
@@ -25,7 +29,11 @@ describe('ProjectEntry', () => {
 
   it('renders as a link when href is provided', () => {
     render(
-      <ProjectEntry project={{ ...project, href: 'https://example.com' }} />,
+      <ProjectEntry
+        project={{ ...project, href: 'https://example.com' }}
+        title="Demo Project"
+        summary="A short description."
+      />,
     );
 
     expect(screen.getByRole('link')).toHaveAttribute(

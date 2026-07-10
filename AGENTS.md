@@ -177,6 +177,7 @@ Files use kebab-case (`project-card.tsx`, `format-date.ts`). Prefer explicit nam
 - `frontend-performance` — React Compiler, streaming, virtualization, bundle size.
 - `frontend-design` — distinctive, intentional visual design.
 - `frontend-theming` — semantic design tokens and light/dark theming (CSS-first Tailwind v4 + next-themes).
+- `frontend-i18n` — bilingual (es/en) UI with next-intl message catalogs and a cookie locale.
 - `frontend-e2e` — Playwright browser end-to-end tests for user journeys.
 - `code-quality` — the knip + jscpd gates and DRY extraction.
 - `commit-check` — validate a change against commit/branch standards before committing.

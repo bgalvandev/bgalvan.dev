@@ -2,7 +2,16 @@ import type { Project } from '@/content/projects';
 
 // Server Component by default — no interactivity, no browser APIs. Renders one
 // project as a year-led list row; the whole row is a link when `href` is set.
-export function ProjectEntry({ project }: { project: Project }) {
+// `title`/`summary` are localized text (from the catalogs), passed in by the page.
+export function ProjectEntry({
+  project,
+  title,
+  summary,
+}: {
+  project: Project;
+  title: string;
+  summary: string;
+}) {
   const inner = (
     <>
       <span className="pt-1 font-mono text-xs tabular-nums text-muted">
@@ -10,7 +19,7 @@ export function ProjectEntry({ project }: { project: Project }) {
       </span>
       <div>
         <h3 className="text-lg font-medium text-ink transition-colors group-hover:text-accent">
-          {project.title}
+          {title}
           {project.href && (
             <span
               aria-hidden
@@ -20,9 +29,7 @@ export function ProjectEntry({ project }: { project: Project }) {
             </span>
           )}
         </h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted">
-          {project.summary}
-        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted">{summary}</p>
         <ul className="tech-list mt-3 flex flex-wrap font-mono text-xs text-muted">
           {project.stack.map((tech) => (
             <li key={tech}>{tech}</li>
