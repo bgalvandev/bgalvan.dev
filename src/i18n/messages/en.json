@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Bruno Galván — Software engineer",
+    "description": "Bruno Galván is a software engineer building clear, reliable web software. Selected work and ways to get in touch."
+  },
+  "nav": {
+    "language": "Language",
+    "themeToggle": "Toggle color theme",
+    "themeToDark": "Dark",
+    "themeToLight": "Light"
+  },
+  "home": {
+    "name": "Bruno Galván — Software engineer",
+    "headline": "I build web software that stays clear as it grows.",
+    "intro": "I care about clean architecture, fast interfaces, and details that hold up. Below is a selection of recent work.",
+    "statusLabel": "Status",
+    "statusValue": "Available for select work",
+    "focusLabel": "Focus",
+    "focusValue": "Web platforms, end to end",
+    "basedLabel": "Based",
+    "basedValue": "Remote",
+    "work": "Selected work",
+    "contact": "Get in touch"
+  },
+  "projects": {
+    "project-one": {
+      "title": "Project one",
+      "summary": "One specific sentence about what it does and why it mattered."
+    },
+    "project-two": {
+      "title": "Project two",
+      "summary": "What problem it solved, for whom, and the outcome you reached."
+    },
+    "project-three": {
+      "title": "Project three",
+      "summary": "A short, concrete description — plain words over buzzwords."
+    }
+  }
+}

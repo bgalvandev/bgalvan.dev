@@ -1,36 +1,31 @@
+// Slugs are the stable, locale-neutral keys; the title and summary for each live
+// in the message catalogs (src/i18n/messages/*.json) under `projects.<slug>`.
+type ProjectSlug = 'project-one' | 'project-two' | 'project-three';
+
 export type Project = {
-  slug: string;
+  slug: ProjectSlug;
   /** Year shipped — drives the indexed list on the home page. */
   year: string;
-  title: string;
-  summary: string;
   stack: string[];
   href?: string;
 };
 
-// Placeholder content — replace with your real work. Keeping the site's data
-// here (not hardcoded in components) makes it trivial to move to MDX or a CMS
-// later without touching the UI. Order newest-first; `year` is shown as-is.
+// Placeholder content — replace with your real work. Structure lives here;
+// the localized title/summary text lives in the catalogs. Order newest-first.
 export const projects: Project[] = [
   {
     slug: 'project-one',
     year: '2026',
-    title: 'Project one',
-    summary: 'One specific sentence about what it does and why it mattered.',
     stack: ['TypeScript', 'Next.js', 'PostgreSQL'],
   },
   {
     slug: 'project-two',
     year: '2025',
-    title: 'Project two',
-    summary: 'What problem it solved, for whom, and the outcome you reached.',
     stack: ['TypeScript', 'React', 'Node.js'],
   },
   {
     slug: 'project-three',
     year: '2024',
-    title: 'Project three',
-    summary: 'A short, concrete description — plain words over buzzwords.',
     stack: ['SvelteKit', 'TypeScript', 'Vite'],
   },
 ];

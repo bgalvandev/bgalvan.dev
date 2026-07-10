@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/home.page';
 
+// Pin the locale to English so structural assertions are stable regardless of
+// the configured default locale. The language-switch test overrides it.
+test.beforeEach(async ({ context }) => {
+  await context.addCookies([
+    { name: 'NEXT_LOCALE', value: 'en', url: 'http://localhost:3000' },
+  ]);
+});
+
 test.describe('home page', () => {
   test('shows the hero, work, and contact', { tag: '@smoke' }, async ({
     page,
@@ -47,5 +55,16 @@ test.describe('home page', () => {
     await expect(html).toHaveClass(/dark/);
     await home.themeToggle.click();
     await expect(html).not.toHaveClass(/dark/);
+  });
+
+  test('switches language to Spanish', async ({ page }) => {
+    const home = new HomePage(page);
+    await home.goto();
+
+    await expect(home.heading).toHaveText(/stays clear as it grows/i);
+    await home.localeSwitcher
+      .getByRole('button', { name: 'es', exact: true })
+      .click();
+    await expect(home.heading).toHaveText(/se mantiene claro/i);
   });
 });

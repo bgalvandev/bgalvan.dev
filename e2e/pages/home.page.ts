@@ -11,6 +11,7 @@ export class HomePage {
   readonly emailLink: Locator;
   readonly githubLink: Locator;
   readonly themeToggle: Locator;
+  readonly localeSwitcher: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,6 +21,7 @@ export class HomePage {
     this.emailLink = page.getByRole('link', { name: 'bruno@clinicsay.com' });
     this.githubLink = page.getByRole('link', { name: 'GitHub' });
     this.themeToggle = page.getByRole('button', { name: 'Toggle color theme' });
+    this.localeSwitcher = page.getByRole('group', { name: 'Language' });
   }
 
   async goto() {
