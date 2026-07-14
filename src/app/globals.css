@@ -91,6 +91,37 @@
   }
 }
 
+/*
+ * One orchestrated page-load moment: content sections fade up in a gentle
+ * cascade. Guarded by `no-preference` so that under reduced motion (or no
+ * animation support) the content is simply visible — never stuck at opacity 0.
+ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .reveal-2 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-3 {
+    animation-delay: 0.22s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
