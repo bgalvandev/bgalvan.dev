@@ -21,7 +21,7 @@ export default function HomePage() {
         <ThemeToggle />
       </div>
 
-      <header>
+      <header className="reveal">
         <p className="font-mono text-sm text-muted">{t('name')}</p>
         <h1 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
           {t('headline')}
@@ -40,7 +40,7 @@ export default function HomePage() {
         </dl>
       </header>
 
-      <section className="mt-16 sm:mt-20" aria-labelledby="work">
+      <section className="reveal reveal-2 mt-16 sm:mt-20" aria-labelledby="work">
         <h2
           id="work"
           className="font-mono text-xs uppercase tracking-widest text-muted"
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="mt-20 border-t border-line pt-8">
+      <footer className="reveal reveal-3 mt-20 border-t border-line pt-8">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
           {t('contact')}
         </p>
