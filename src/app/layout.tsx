@@ -1,8 +1,24 @@
 import type { Metadata } from 'next';
+import { Archivo, JetBrains_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
+
+// Self-hosted at build time (no layout shift, no external request at runtime).
+// Archivo carries the sans personality; JetBrains Mono is the data/label face
+// that does the "engineered" talking (the spec header, years, and eyebrows).
+const sans = Archivo({
+  subsets: ['latin'],
+  variable: '--font-sans-face',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono-face',
+  display: 'swap',
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
@@ -29,7 +45,11 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>{children}</ThemeProvider>
